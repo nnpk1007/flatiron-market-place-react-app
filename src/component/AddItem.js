@@ -6,10 +6,39 @@ function AddItem() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
 
+  // handle submit button click
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const newItem = {
+            title,
+            price : parseFloat(price),
+            description,
+            image,
+        }
+
+        fetch("http://localhost:3001/items", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newItem),
+        })
+        .then((r) => r.json())
+        .then((data) => {
+            // reset the form fields
+            setTitle("")
+            setDescription("")
+            setPrice("")
+            setImage("")
+        })
+        .catch((error) => console.log(error))
+    }
+
   return (
     <div>
       <h1>Add Item For Sale</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Title</label>
           <input type="text" className="form-control" value={title} required onChange={(e) => setTitle(e.target.value)}/>
