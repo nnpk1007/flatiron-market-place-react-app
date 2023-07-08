@@ -2,19 +2,27 @@ import React, { useEffect, useState } from "react";
 
 function Listing() {
   const [items, setItems] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null)
 
+  // fetch items from JSON server
   useEffect(() => {
     fetch("http://localhost:3001/items")
       .then((r) => r.json())
       .then((data) => setItems(data))
       .catch((error) => console.log(error));
-  }, []); 
+  }, [items]);
 
+  // handle buy button click
   const handleBuyClick = (itemId) => {
-    setSelectedItem(itemId)
-  }
+   fetch(`http://localhost:3001/items/${itemId}`, {
+    method: "DELETE"
+   })
+   .then(() => {
+    setItems(items.filter((item) => item.id !== itemId))
+   })
+   .catch((error) => console.log(error))
+  };
 
+  
   return (
     <div>
       <h1>Listing Items</h1>
@@ -32,9 +40,14 @@ function Listing() {
                 <h5 className="card-title">{item.title}</h5>
                 <p className="card-text">{item.description}</p>
                 <p className="card-text">${item.price}</p>
-                <button className="btn btn-primary" onClick={() => handleBuyClick(item.id)}>Buy</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleBuyClick(item.id)}
+                >
+                  Buy
+                </button>
               </div>
-            </div> 
+            </div>
           </div>
         ))}
       </div>
