@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 
 function Listing() {
   const [items, setItems] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredItem = items.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
 
   // fetch items from JSON server
   useEffect(() => {
@@ -13,21 +16,27 @@ function Listing() {
 
   // handle buy button click
   const handleBuyClick = (itemId) => {
-   fetch(`http://localhost:3001/items/${itemId}`, {
-    method: "DELETE"
-   })
-   .then(() => {
-    setItems(items.filter((item) => item.id !== itemId))
-   })
-   .catch((error) => console.log(error))
+    fetch(`http://localhost:3001/items/${itemId}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        setItems(items.filter((item) => item.id !== itemId));
+      })
+      .catch((error) => console.log(error));
   };
 
-  
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value)
+  }
+
   return (
     <div>
+      <form>
+        <input type="text" placeholder="Search Item" value={searchTerm} onChange={handleSearch}/>
+      </form>
       <h1>Listing Items</h1>
       <div className="row">
-        {items.map((item) => (
+        {filteredItem.map((item) => (
           <div key={item.id} className="col-lg-4 mb-4">
             <div className="card">
               <img
