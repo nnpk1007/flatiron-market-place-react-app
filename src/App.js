@@ -8,10 +8,10 @@ import AddItem from "./component/AddItem";
 
 function App() {
   // state to track user logged in
-  const [loggedIn, setLoggIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const handleLogout = () => {
-    setLoggIn(false)
+    setLoggedIn(false)
   }
 
   return (
