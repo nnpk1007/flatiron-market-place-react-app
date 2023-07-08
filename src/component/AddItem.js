@@ -26,6 +26,9 @@ function AddItem() {
           <label>Image</label>
           <input type="url" className="form-control" value={image} required onChange={(e) => setImage(e.target.value)}/>
         </div>
+        <button type="submit" className="btn btn-primary mt-2" >
+            Submit
+        </button>
       </form>
     </div>
   );
