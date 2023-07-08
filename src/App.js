@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+} from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -18,7 +23,7 @@ function App() {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-    fetch("http://localhost:3001/users")
+    fetch("http://localhost:3000/users")
       .then((r) => r.json())
       .then((data) => {
         const user = data.find(
@@ -27,10 +32,10 @@ function App() {
 
         if (user) {
           setLoggedIn(true);
-          error("");
+          setError("");
         } else {
           setLoggedIn(false);
-          error("Invalid username or password");
+          setError("Invalid username or password");
         }
       });
   };
@@ -76,26 +81,23 @@ function App() {
             </li>
           ) : (
             <li className="nav-item">
-              <button className="nav-link" to="/login">
+              <Link className="nav-link" to="/login">
                 Login
-              </button>
+              </Link>
             </li>
           )}
         </ul>
       </nav>
+      
       <div className="container mt-4">
-        <Switch>
-          <Route exact path={["/", "/home", "/listing"]}>
-            <Listing />
-          </Route>
-          <Route path="/add-item">
-            <AddItem />
-          </Route>
-          <Route path="/login">
-            {/* if login is true, go to homepage, else go to login */}
-            {loggedIn ? (
-              <Redirect to="/" />
-            ) : (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/listing" element={<Listing />} />
+          <Route path="/add-item" element={<AddItem />} />
+          <Route
+            path="/login"
+            element={
+              loggedIn ? <Navigate to="/" /> : (
               <Login
                 username={username}
                 password={password}
@@ -103,13 +105,17 @@ function App() {
                 setPassword={setPassword}
                 handleLogin={handleLogin}
                 error={error}
-              />
-            )}
-          </Route>
-        </Switch>
+              />)
+            }
+          />
+        </Routes>
       </div>
     </Router>
   );
+}
+
+function Home() {
+  return <Navigate to="/listing" />;
 }
 
 export default App;

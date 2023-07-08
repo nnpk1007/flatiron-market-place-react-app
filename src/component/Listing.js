@@ -8,7 +8,7 @@ function Listing() {
 
   // fetch items from JSON server
   useEffect(() => {
-    fetch("http://localhost:3001/items")
+    fetch("http://localhost:3000/items")
       .then((r) => r.json())
       .then((data) => setItems(data))
       .catch((error) => console.log(error));
@@ -16,7 +16,7 @@ function Listing() {
 
   // handle buy button click
   const handleBuyClick = (itemId) => {
-    fetch(`http://localhost:3001/items/${itemId}`, {
+    fetch(`http://localhost:3000/items/${itemId}`, {
       method: "DELETE",
     })
       .then(() => {

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function AddItem() {
+    const navigate = useNavigate()
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const history = useHistory()
 
   // handle submit button click
     const handleSubmit = (e) => {
@@ -19,7 +19,7 @@ function AddItem() {
             image,
         }
 
-        fetch("http://localhost:3001/items", {
+        fetch("http://localhost:3000/items", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function AddItem() {
             if (addMore) {
             }
             else {
-                history.push("/home")
+                navigate("/home")
             }
         })
         .catch((error) => console.log(error))
