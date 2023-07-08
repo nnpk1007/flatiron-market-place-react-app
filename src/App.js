@@ -46,6 +46,17 @@ function App() {
     setPassword("");
   };
 
+  // Define a higher-order component (HOC) called requireAuth that takes a component as an argument. 
+  // The requireAuth function is used to conditionally render the provided component based on whether the user is logged in.
+
+  const requireAuth = (Component) => {
+    // checks the value of the loggedIn state. If loggedIn is true, meaning the user is logged in, 
+    // it renders the Component by using JSX syntax: <Component />. This means the component is rendered as is.
+    // If loggedIn is false, indicating that the user is not logged in, 
+    // it renders the <Navigate /> component with the to prop set to "/login".
+    return loggedIn ? <Component /> : <Navigate to="/login" />
+  }
+
   return (
     <Router>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
@@ -93,7 +104,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/listing" element={<Listing />} />
-          <Route path="/add-item" element={<AddItem />} />
+          <Route path="/add-item" element={requireAuth(AddItem)} />
           <Route
             path="/login"
             element={
