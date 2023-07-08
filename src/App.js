@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import Listing from "./component/Listing";
+
 function App() {
   return (
     <Router>
@@ -26,6 +28,7 @@ function App() {
       <div className="container mt-4">
           <Switch>
             <Route exact path={["/", "/home"]}>
+              <Listing />
             </Route>
           </Switch>
       </div>
