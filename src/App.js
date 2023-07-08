@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Listing from "./component/Listing";
 import AddItem from "./component/AddItem";
+import Login from "./component/Login";
 
 function App() {
   // state to track user logged in
@@ -49,6 +51,10 @@ function App() {
             </Route>
             <Route path="/add-item">
               <AddItem />
+            </Route>
+            <Route path="/login">
+              {/* if login is true, go to homepage, else go to login */}
+              {(loggedIn) ? <Redirect to="/" /> : (<Login />)}
             </Route>
           </Switch>
       </div>
