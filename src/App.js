@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
-      <Link className="navbar-brand" style={{ fontSize: "30px", color: "blue" }} to="/">Old Stuff For Sale</Link>
+      <Link className="navbar-brand" style={{ fontSize: "30px", color: "blue" }} to="/">Used Items For Sale</Link>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
             <Link className="nav-link" to="/">Home</Link>
@@ -18,7 +18,7 @@ function App() {
             <Link className="nav-link" to="/listing">Listing</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/add-stuff">Add Stuff</Link>
+            <Link className="nav-link" to="/add-stuff">Add Items</Link>
           </li>
           {/* <li className="nav-item">
             <Link className="nav-link" to="/login">Login</Link>
@@ -27,7 +27,7 @@ function App() {
       </nav>
       <div className="container mt-4">
           <Switch>
-            <Route exact path={["/", "/home"]}>
+            <Route exact path={["/", "/home", "/listing"]}>
               <Listing />
             </Route>
           </Switch>
