@@ -48,7 +48,6 @@ function App() {
 
   // Define a higher-order component (HOC) called requireAuth that takes a component as an argument.
   // The requireAuth function is used to conditionally render the provided component based on whether the user is logged in.
-
   const requireAuth = (Component) => {
     // checks the value of the loggedIn state. If loggedIn is true, meaning the user is logged in,
     // it renders the Component by using JSX syntax: <Component />. This means the component is rendered as is.
@@ -62,32 +61,32 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
         <Link
           className="navbar-brand"
-          style={{ fontSize: "30px", color: "blue" }}
+          style={{ fontSize: "50px", color: "blue", fontFamily:"'Lobster', cursive", fontWeight: 700 }}
           to="/"
         >
           Used Items For Sale
         </Link>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/listing">
+            <Link className="nav-link" to="/listing" style={{ fontSize: "24px", color: "purple" }}>
               Listing
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/add-item">
+            <Link className="nav-link" to="/add-item" style={{ fontSize: "24px", color: "purple" }}>
               Add Items
             </Link>
           </li>
           {/* if loggedin is true, then show Logout, if not, show Login*/}
           {loggedIn ? (
-            <li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={handleLogout}>
+            <li className="nav-item" >
+              <button className="nav-link btn btn-link" style={{ fontSize: "24px", color: "purple" }} onClick={handleLogout}>
                 Logout
               </button>
             </li>
           ) : (
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
+              <Link className="nav-link" to="/login" style={{ fontSize: "24px", color: "purple" }}>
                 Login
               </Link>
             </li>
