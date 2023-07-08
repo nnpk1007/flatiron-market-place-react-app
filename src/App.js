@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Listing from "./component/Listing";
+import AddItem from "./component/AddItem";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
             <Link className="nav-link" to="/listing">Listing</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/add-stuff">Add Items</Link>
+            <Link className="nav-link" to="/add-item">Add Items</Link>
           </li>
           {/* <li className="nav-item">
             <Link className="nav-link" to="/login">Login</Link>
@@ -29,6 +30,9 @@ function App() {
           <Switch>
             <Route exact path={["/", "/home", "/listing"]}>
               <Listing />
+            </Route>
+            <Route path="/add-item">
+              <AddItem />
             </Route>
           </Switch>
       </div>
