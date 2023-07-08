@@ -1,11 +1,14 @@
 import React from "react";
 
 function Login({ username, password, setUsername, setPassword, handleLogin, error}) {
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        handleLogin()
+    }
   return (
     <div>
       <h1>Login</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Username</label>
           <input type="text" value={username} className="form-control" required onChange={(e) => setUsername(e.target.value)}/>
