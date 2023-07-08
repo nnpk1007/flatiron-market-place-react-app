@@ -26,18 +26,19 @@ function App() {
         );
 
         if (user) {
-          setLoggedIn(true)
-          error("")
-        }
-        else {
-          setLoggedIn(false)
-          error("Invalid username or password")
+          setLoggedIn(true);
+          error("");
+        } else {
+          setLoggedIn(false);
+          error("Invalid username or password");
         }
       });
   };
 
   const handleLogout = () => {
     setLoggedIn(false);
+    setUsername("");
+    setPassword("");
   };
 
   return (
@@ -92,7 +93,18 @@ function App() {
           </Route>
           <Route path="/login">
             {/* if login is true, go to homepage, else go to login */}
-            {loggedIn ? <Redirect to="/" /> : <Login />}
+            {loggedIn ? (
+              <Redirect to="/" />
+            ) : (
+              <Login
+                username={username}
+                password={password}
+                setUsername={setUsername}
+                setPassword={setPassword}
+                handleLogin={handleLogin}
+                error={error}
+              />
+            )}
           </Route>
         </Switch>
       </div>
