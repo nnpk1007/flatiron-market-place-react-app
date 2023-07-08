@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
+      <Link className="navbar-brand" style={{ fontSize: "30px", color: "blue" }} to="/">Old Stuff For Sale</Link>
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <Link className="nav-link" to="/">Home</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/listing">Listing</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/add-stuff">Add Stuff</Link>
+          </li>
+          {/* <li className="nav-item">
+            <Link className="nav-link" to="/login">Login</Link>
+          </li> */}
+        </ul>
+      </nav>
+      <div className="container mt-4">
+          <Switch>
+            <Route exact path={["/", "/home"]}>
+            </Route>
+          </Switch>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
