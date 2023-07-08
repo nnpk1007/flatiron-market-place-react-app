@@ -61,32 +61,53 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
         <Link
           className="navbar-brand"
-          style={{ fontSize: "50px", color: "blue", fontFamily:"'Lobster', cursive", fontWeight: 700 }}
+          style={{
+            fontSize: "50px",
+            color: "blue",
+            fontFamily: "'Lobster', cursive",
+            fontWeight: 700,
+          }}
           to="/"
         >
           Used Items For Sale
         </Link>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/listing" style={{ fontSize: "24px", color: "purple" }}>
+            <Link
+              className="nav-link"
+              to="/listing"
+              style={{ fontSize: "24px", color: "purple" }}
+            >
               Listing
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/add-item" style={{ fontSize: "24px", color: "purple" }}>
+            <Link
+              className="nav-link"
+              to="/add-item"
+              style={{ fontSize: "24px", color: "purple" }}
+            >
               Add Items
             </Link>
           </li>
           {/* if loggedin is true, then show Logout, if not, show Login*/}
           {loggedIn ? (
-            <li className="nav-item" >
-              <button className="nav-link btn btn-link" style={{ fontSize: "24px", color: "purple" }} onClick={handleLogout}>
+            <li className="nav-item">
+              <button
+                className="nav-link btn btn-link"
+                style={{ fontSize: "24px", color: "purple" }}
+                onClick={handleLogout}
+              >
                 Logout
               </button>
             </li>
           ) : (
             <li className="nav-item">
-              <Link className="nav-link" to="/login" style={{ fontSize: "24px", color: "purple" }}>
+              <Link
+                className="nav-link"
+                to="/login"
+                style={{ fontSize: "24px", color: "purple" }}
+              >
                 Login
               </Link>
             </li>
@@ -96,7 +117,7 @@ function App() {
 
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Listing />} />
           <Route path="/listing" element={<Listing loggedIn={loggedIn} />} />
           <Route path="/add-item" element={requireAuth(AddItem)} />
           <Route
@@ -120,10 +141,6 @@ function App() {
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <Navigate to="/listing" />;
 }
 
 export default App;
