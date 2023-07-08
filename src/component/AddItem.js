@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function AddItem() {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const history = useHistory()
 
   // handle submit button click
     const handleSubmit = (e) => {
@@ -31,6 +33,14 @@ function AddItem() {
             setDescription("")
             setPrice("")
             setImage("")
+
+            const addMore = window.confirm("Item added successfully. Do you want to add more item for sale?")
+
+            if (addMore) {
+            }
+            else {
+                history.push("/home")
+            }
         })
         .catch((error) => console.log(error))
     }
