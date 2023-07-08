@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
-function Listing() {
+function Listing({ loggedIn }) {
+  const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredItem = items.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+  const filteredItem = items.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // fetch items from JSON server
   useEffect(() => {
@@ -16,23 +20,32 @@ function Listing() {
 
   // handle buy button click
   const handleBuyClick = (itemId) => {
-    fetch(`http://localhost:3000/items/${itemId}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        setItems(items.filter((item) => item.id !== itemId));
+    if (loggedIn) {
+      fetch(`http://localhost:3000/items/${itemId}`, {
+        method: "DELETE",
       })
-      .catch((error) => console.log(error));
+        .then(() => {
+          setItems(items.filter((item) => item.id !== itemId));
+        })
+        .catch((error) => console.log(error));
+    } else {
+      navigate("/login");
+    }
   };
 
   const handleSearch = (e) => {
-    setSearchTerm(e.target.value)
-  }
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <div>
       <form>
-        <input type="text" placeholder="Search Item" value={searchTerm} onChange={handleSearch}/>
+        <input
+          type="text"
+          placeholder="Search Item"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
       </form>
       <h1>Listing Items</h1>
       <div className="row">
