@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Listing from "./component/Listing";
 import AddItem from "./component/AddItem";
 import Login from "./component/Login";
+import Signup from "./component/Signup";
 
 function App() {
   // state to track user logged in
@@ -112,6 +113,15 @@ function App() {
               </Link>
             </li>
           )}
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              to="/sign-up"
+              style={{ fontSize: "24px", color: "purple" }}
+            >
+              Create Account
+            </Link>
+          </li>
         </ul>
       </nav>
 
@@ -120,6 +130,7 @@ function App() {
           <Route path="/" element={<Listing />} />
           <Route path="/listing" element={<Listing loggedIn={loggedIn} />} />
           <Route path="/add-item" element={requireAuth(AddItem)} />
+          <Route path="/sign-up" element={<Signup username={username} setUsername={setUsername} setPassword={setPassword} password={password}/>} />
           <Route
             path="/login"
             element={
