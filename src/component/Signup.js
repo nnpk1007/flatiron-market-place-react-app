@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import {v4 as uuidv4} from "uuid"
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router";
 
-function Signup() {
-    const [usernameInput, setUsernameInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
+function Signup({username, setUsername, password, setPassword }) {
+    const navigate = useNavigate()
     const handleSubmit = (e) => {
     e.preventDefault();
 
     const newUser = {
-      username: usernameInput,
-      password:passwordInput,
-      id: uuidv4()
+      username,
+      password,
+      id: uuidv4(),
     };
 
     fetch("http://localhost:3000/users", {
@@ -22,9 +22,9 @@ function Signup() {
     })
       .then((r) => r.json())
       .then((data) => {
-        // reset the form field
-        setUsernameInput("");
-        setPasswordInput("");
+        setUsername("")
+        setPassword("")
+        navigate("/login")
       })
       .catch((error) => console.log(error));
   };
@@ -38,17 +38,17 @@ function Signup() {
           <input
             type="text"
             className="form-control"
-            value={usernameInput}
+            value={username}
             required
-            onChange={(e) => setUsernameInput(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <label>Password</label>
           <input
             type="password"
             className="form-control"
-            value={passwordInput}
+            value={password}
             required
-            onChange={(e) => setPasswordInput(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary mt-2">
