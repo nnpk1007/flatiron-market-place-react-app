@@ -130,7 +130,17 @@ function App() {
           <Route path="/" element={<Listing />} />
           <Route path="/listing" element={<Listing loggedIn={loggedIn} />} />
           <Route path="/add-item" element={requireAuth(AddItem)} />
-          <Route path="/sign-up" element={<Signup username={username} setUsername={setUsername} setPassword={setPassword} password={password}/>} />
+          <Route
+            path="/sign-up"
+            element={
+              <Signup
+                username={username}
+                setUsername={setUsername}
+                password={password}
+                setPassword={setPassword}
+              />
+            }
+          />
           <Route
             path="/login"
             element={
