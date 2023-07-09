@@ -55,11 +55,11 @@ function Listing({ loggedIn }) {
               <img
                 src={item.image}
                 className="card-image-top"
-                style={{ height: "300px", objectFit: "contain" }}
+                style={{ height: "200px", objectFit: "contain" }}
                 alt={item.title}
               />
-              <div className="card-body">
-                <h5 className="card-title">{item.title}</h5>
+              <div className="card-body text-center">
+                <h5 className="card-title ">{item.title}</h5>
                 <p className="card-text">{item.description}</p>
                 <p className="card-text">${item.price}</p>
                 <button

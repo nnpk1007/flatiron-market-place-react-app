@@ -38,7 +38,7 @@ function Login({
           </div>
           {error && <div className="text-danger">{error}</div>}
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary mt-2">
           Login
         </button>
       </form>
