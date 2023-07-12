@@ -130,8 +130,8 @@ function App() {
 
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Listing call={call}/>} />
-          <Route path="/listing" element={<Listing loggedIn={loggedIn} />} />
+          <Route path="/" element={<Listing  call={call}/>} />
+          <Route path="/listing" element={<Listing loggedIn={loggedIn} username={username} />} />
           <Route path="/add-item" element={requireAuth(AddItem)} />
           <Route
             path="/sign-up"

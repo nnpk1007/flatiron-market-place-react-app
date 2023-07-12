@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-function Listing({ loggedIn }) {
+function Listing({ loggedIn, username }) {
+  console.log("from Listing.js:", username)
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,7 +17,7 @@ function Listing({ loggedIn }) {
       .then((r) => r.json())
       .then((data) => setItems(data))
       .catch((error) => console.log(error));
-  }, [items]);
+  }, []);
 
   // handle buy button click
   const handleBuyClick = (itemId) => {
@@ -64,12 +65,15 @@ function Listing({ loggedIn }) {
                 <p className="card-text">${item.price}</p>
                 <p className="card-text>">Sold by {item.soldby}</p>
                 <p className="card-text">Call/Text: {item.callortext}</p>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => handleBuyClick(item.id)}
-                >
-                  Buy
-                </button>
+                {username === item.soldby ? (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleBuyClick(item.id)}
+                    >
+                      Remove
+                    </button>
+                ) : "" }
+
               </div>
             </div>
           </div>
