@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-function Listing({ loggedIn, call }) {
+function Listing({ loggedIn }) {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -63,6 +63,7 @@ function Listing({ loggedIn, call }) {
                 <p className="card-text">{item.description}</p>
                 <p className="card-text">${item.price}</p>
                 <p className="card-text>">Sold by {item.soldby}</p>
+                <p className="card-text">Call/Text: {item.callortext}</p>
                 <button
                   className="btn btn-primary"
                   onClick={() => handleBuyClick(item.id)}

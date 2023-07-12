@@ -57,7 +57,7 @@ function App() {
     // it renders the Component by using JSX syntax: <Component />. This means the component is rendered as is.
     // If loggedIn is false, indicating that the user is not logged in,
     // it renders the <Navigate /> component with the to prop set to "/login".
-    return loggedIn ? <Component username={username}/> : <Navigate to="/login" />;
+    return loggedIn ? <Component username={username} call={call}/> : <Navigate to="/login" />;
   };
 
   return (
