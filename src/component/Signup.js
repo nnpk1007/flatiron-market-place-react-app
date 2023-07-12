@@ -2,7 +2,7 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router";
 
-function Signup({ username, setUsername, password, setPassword }) {
+function Signup({ username, setUsername, password, setPassword, call, setCall }) {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,6 +10,7 @@ function Signup({ username, setUsername, password, setPassword }) {
     const newUser = {
       username,
       password,
+      call,
       id: uuidv4(),
     };
 
@@ -24,6 +25,7 @@ function Signup({ username, setUsername, password, setPassword }) {
       .then((data) => {
         setUsername("");
         setPassword("");
+        setCall("")
         navigate("/login");
       })
       .catch((error) => console.log(error));
@@ -49,6 +51,14 @@ function Signup({ username, setUsername, password, setPassword }) {
             value={password}
             required
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <label>Phone</label>
+          <input
+            type="text"
+            className="form-control"
+            value={call}
+            required
+            onChange={(e) => setCall(e.target.value)}
           />
         </div>
         <button type="submit" className="btn btn-primary mt-2">

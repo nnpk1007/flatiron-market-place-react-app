@@ -17,9 +17,10 @@ import Signup from "./component/Signup";
 function App() {
   // state to track user logged in
   const [loggedIn, setLoggedIn] = useState(false);
-  // state to track username and password
+  // state to track username, password, call
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [call, setCall] = useState("")
   // state error if username or password is valid or invalid
   const [error, setError] = useState("");
 
@@ -34,7 +35,6 @@ function App() {
         if (user) {
           console.log(user)
           setUsername(user.username)
-          console.log(username)
           setLoggedIn(true);
           setError("");
         } else {
@@ -130,7 +130,7 @@ function App() {
 
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Listing />} />
+          <Route path="/" element={<Listing call={call}/>} />
           <Route path="/listing" element={<Listing loggedIn={loggedIn} />} />
           <Route path="/add-item" element={requireAuth(AddItem)} />
           <Route
@@ -141,6 +141,8 @@ function App() {
                 setUsername={setUsername}
                 password={password}
                 setPassword={setPassword}
+                call={call}
+                setCall={setCall}
               />
             }
           />
