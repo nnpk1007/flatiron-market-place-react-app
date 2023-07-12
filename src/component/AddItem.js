@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AddItem() {
+function AddItem({ username }) {
+  console.log(username)
     const navigate = useNavigate()
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -17,6 +18,7 @@ function AddItem() {
             price : parseFloat(price),
             description,
             image,
+            soldby: username
         }
 
         fetch("http://localhost:3000/items", {

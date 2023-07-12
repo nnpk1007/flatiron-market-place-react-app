@@ -62,6 +62,7 @@ function Listing({ loggedIn }) {
                 <h5 className="card-title ">{item.title}</h5>
                 <p className="card-text">{item.description}</p>
                 <p className="card-text">${item.price}</p>
+                <p className="card-text>">Sold by {item.soldby}</p>
                 <button
                   className="btn btn-primary"
                   onClick={() => handleBuyClick(item.id)}

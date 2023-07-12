@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router";
 
-function Signup({username, setUsername, password, setPassword }) {
-    const navigate = useNavigate()
-    const handleSubmit = (e) => {
+function Signup({ username, setUsername, password, setPassword }) {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const newUser = {
@@ -22,9 +22,9 @@ function Signup({username, setUsername, password, setPassword }) {
     })
       .then((r) => r.json())
       .then((data) => {
-        setUsername("")
-        setPassword("")
-        navigate("/login")
+        setUsername("");
+        setPassword("");
+        navigate("/login");
       })
       .catch((error) => console.log(error));
   };
