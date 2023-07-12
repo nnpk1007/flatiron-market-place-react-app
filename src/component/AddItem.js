@@ -39,7 +39,7 @@ function AddItem() {
             if (addMore) {
             }
             else {
-                navigate("/home")
+                navigate("/listing")
             }
         })
         .catch((error) => console.log(error))

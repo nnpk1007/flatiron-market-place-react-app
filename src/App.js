@@ -68,7 +68,7 @@ function App() {
             fontFamily: "'Lobster', cursive",
             fontWeight: 700,
           }}
-          to="/"
+          to="/listing"
         >
           Used Items For Sale
         </Link>
@@ -145,7 +145,7 @@ function App() {
             path="/login"
             element={
               loggedIn ? (
-                <Navigate to="/" />
+                <Navigate to="/listing" />
               ) : (
                 <Login
                   username={username}
