@@ -65,7 +65,7 @@ function AddItem({ username, call }) {
           />
           <label>Price</label>
           <input type="text" className="form-control" value={price} required onChange={(e) => setPrice(e.target.value)}/>
-          <label>Image</label>
+          <label>Image Link</label>
           <input type="url" className="form-control" value={image} required onChange={(e) => setImage(e.target.value)}/>
         </div>
         <button type="submit" className="btn btn-primary mt-2" >

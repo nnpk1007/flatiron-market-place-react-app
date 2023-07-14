@@ -6,7 +6,7 @@ function Signup({ username, setUsername, password, setPassword, call, setCall })
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     const newUser = {
       username,
       password,

@@ -20,7 +20,7 @@ function Listing({ loggedIn, username }) {
   }, []);
 
   // handle buy button click
-  const handleBuyClick = (itemId) => {
+  const handleRemoveClick = (itemId) => {
     if (loggedIn) {
       fetch(`http://localhost:3000/items/${itemId}`, {
         method: "DELETE",
@@ -48,11 +48,11 @@ function Listing({ loggedIn, username }) {
           onChange={handleSearch}
         />
       </form>
-      <h1>Listing Items</h1>
-      <div className="row">
+      
+      <div className="row mt-5">
         {filteredItem.map((item) => (
-          <div key={item.id} className="col-lg-4 mb-4">
-            <div className="card">
+          <div key={item.id} className="col-lg-4 mb-4" >
+            <div className="card h-100">
               <img
                 src={item.image}
                 className="card-image-top"
@@ -68,7 +68,7 @@ function Listing({ loggedIn, username }) {
                 {username === item.soldby ? (
                     <button
                       className="btn btn-primary"
-                      onClick={() => handleBuyClick(item.id)}
+                      onClick={() => handleRemoveClick(item.id)}
                     >
                       Remove
                     </button>

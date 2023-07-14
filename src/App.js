@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   Navigate,
 } from "react-router-dom";
 
@@ -13,6 +12,7 @@ import Listing from "./component/Listing";
 import AddItem from "./component/AddItem";
 import Login from "./component/Login";
 import Signup from "./component/Signup";
+import Navbar from "./component/Navbar";
 
 function App() {
   // state to track user logged in
@@ -20,7 +20,7 @@ function App() {
   // state to track username, password, call
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [call, setCall] = useState("")
+  const [call, setCall] = useState("");
   // state error if username or password is valid or invalid
   const [error, setError] = useState("");
 
@@ -33,8 +33,10 @@ function App() {
         );
 
         if (user) {
-          console.log(user)
-          setUsername(user.username)
+          console.log(user.username);
+          console.log(user.call);
+          setUsername(user.username);
+          setCall(user.call);
           setLoggedIn(true);
           setError("");
         } else {
@@ -48,6 +50,7 @@ function App() {
     setLoggedIn(false);
     setUsername("");
     setPassword("");
+    setCall("");
   };
 
   // Define a higher-order component (HOC) called requireAuth that takes a component as an argument.
@@ -57,81 +60,24 @@ function App() {
     // it renders the Component by using JSX syntax: <Component />. This means the component is rendered as is.
     // If loggedIn is false, indicating that the user is not logged in,
     // it renders the <Navigate /> component with the to prop set to "/login".
-    return loggedIn ? <Component username={username} call={call}/> : <Navigate to="/login" />;
+    return loggedIn ? (
+      <Component username={username} call={call} />
+    ) : (
+      <Navigate to="/login" />
+    );
   };
 
   return (
     <Router>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2">
-        <Link
-          className="navbar-brand"
-          style={{
-            fontSize: "50px",
-            color: "blue",
-            fontFamily: "'Lobster', cursive",
-            fontWeight: 700,
-          }}
-          to="/listing"
-        >
-          Used Items For Sale
-        </Link>
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/listing"
-              style={{ fontSize: "24px", color: "purple" }}
-            >
-              Listing
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/add-item"
-              style={{ fontSize: "24px", color: "purple" }}
-            >
-              Add Items
-            </Link>
-          </li>
-          {/* if loggedin is true, then show Logout, if not, show Login*/}
-          {loggedIn ? (
-            <li className="nav-item">
-              <button
-                className="nav-link btn btn-link"
-                style={{ fontSize: "24px", color: "purple" }}
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
-            </li>
-          ) : (
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                to="/login"
-                style={{ fontSize: "24px", color: "purple" }}
-              >
-                Login
-              </Link>
-            </li>
-          )}
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              to="/sign-up"
-              style={{ fontSize: "24px", color: "purple" }}
-            >
-              Create Account
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <Navbar loggedIn={loggedIn} handleLogout={handleLogout}/>
 
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Listing  call={call}/>} />
-          <Route path="/listing" element={<Listing loggedIn={loggedIn} username={username} />} />
+          <Route path="/" element={<Listing call={call} />} />
+          <Route
+            path="/listing"
+            element={<Listing loggedIn={loggedIn} username={username} />}
+          />
           <Route path="/add-item" element={requireAuth(AddItem)} />
           <Route
             path="/sign-up"

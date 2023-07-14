@@ -29,7 +29,7 @@ function Login({
           <div className="form-group">
             <label>Password</label>
             <input
-              type="text"
+              type="password"
               value={password}
               className="form-control"
               required
