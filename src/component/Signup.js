@@ -2,11 +2,18 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router";
 
-function Signup({ username, setUsername, password, setPassword, call, setCall }) {
+function Signup({
+  username,
+  setUsername,
+  password,
+  setPassword,
+  call,
+  setCall,
+}) {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const newUser = {
       username,
       password,
@@ -14,19 +21,34 @@ function Signup({ username, setUsername, password, setPassword, call, setCall })
       id: uuidv4(),
     };
 
-    fetch(`${process.env.REACT_APP_API_URL}/users`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    })
+    // check if user name already exists
+    fetch(`${process.env.REACT_APP_API_URL}/users`)
       .then((r) => r.json())
       .then((data) => {
-        setUsername("");
-        setPassword("");
-        setCall("")
-        navigate("/login");
+        const existingUser = data.find(
+          (user) => user.username === newUser.username
+        );
+
+        if (existingUser) {
+          alert("Username already exists. Please choose a different username.");
+          return;
+        }
+        // Submit the form if the username is unique
+        fetch(`${process.env.REACT_APP_API_URL}/users`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((r) => r.json())
+          .then((data) => {
+            setUsername("");
+            setPassword("");
+            setCall("");
+            navigate("/login");
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => console.log(error));
   };
