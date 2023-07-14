@@ -13,7 +13,7 @@ function Listing({ loggedIn, username }) {
 
   // fetch items from JSON server
   useEffect(() => {
-    fetch("http://localhost:3000/items")
+    fetch(`${process.env.REACT_APP_API_URL}/items`)
       .then((r) => r.json())
       .then((data) => setItems(data))
       .catch((error) => console.log(error));
@@ -22,7 +22,7 @@ function Listing({ loggedIn, username }) {
   // handle buy button click
   const handleRemoveClick = (itemId) => {
     if (loggedIn) {
-      fetch(`http://localhost:3000/items/${itemId}`, {
+      fetch(`${process.env.REACT_APP_API_URL}/items/${itemId}`, {
         method: "DELETE",
       })
         .then(() => {

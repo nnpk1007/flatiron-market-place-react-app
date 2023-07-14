@@ -25,7 +25,7 @@ function App() {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-    fetch("http://localhost:3000/users")
+    fetch(`${process.env.REACT_APP_API_URL}/users`)
       .then((r) => r.json())
       .then((data) => {
         const user = data.find(

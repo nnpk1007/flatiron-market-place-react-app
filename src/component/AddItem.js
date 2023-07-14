@@ -22,7 +22,7 @@ function AddItem({ username, call }) {
             callortext: call
         }
 
-        fetch("http://localhost:3000/items", {
+        fetch(`${process.env.REACT_APP_API_URL}/items`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
