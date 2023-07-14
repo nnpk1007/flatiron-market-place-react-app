@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// React Router V6 learning source : https://blog.logrocket.com/react-router-v6-guide/
 import {
   BrowserRouter as Router,
   Routes,
@@ -53,6 +54,7 @@ function App() {
     setCall("");
   };
 
+  // Learning source:https://www.makeuseof.com/create-protected-route-in-react/#:~:text=To%20protect%20routes%2C%20the%20private,private%20component%20as%20a%20child.&text=The%20Protected%20component%20will%20check%20whether%20isLoggedIn%20is%20true%20or%20false.
   // Define a higher-order component (HOC) called requireAuth that takes a component as an argument.
   // The requireAuth function is used to conditionally render the provided component based on whether the user is logged in.
   const requireAuth = (Component) => {

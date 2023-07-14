@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Flatiron Market Place
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Flatiron Market Place is an application for students of Flatiron school to buy and sell used items.
 
-## Available Scripts
+![Alt text](public/image.png)
 
-In the project directory, you can run:
+The project consists of two repositories:
 
-### `npm start`
+1. [json-server repository](https://github.com/nnpk1007/json-server-react-app): This repository contains the code for the JSON Server, which serves as the backend for Flatiron Market Place app. It handles the storage and retrieval of listing items and users data.
+2. [React app repository](https://github.com/nnpk1007/flatiron-market-place-react-app): This repository contains the code for the React frontend of Flatiron Market Place app. It provides the user interface for interacting with listing items.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Custom Environment Variables
+The React app uses custom environment variables to configure different settings based on the environment (development or production). The following files have been provided:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- env.development: Contains environment variables used for development.
+- env.production: Contains environment variables used for production.
 
-### `npm test`
+## Development
+To work on Flatiron Market Place app locally, follow the steps below:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Setting up the JSON Server
+1. Fork and clone the [json-server repository](https://github.com/nnpk1007/json-server-react-app) to your local machine, and change directory into this folder
+2. Install the required dependencies by running the following command : 
+    <pre>
+    npm install
+    </pre>
+3. Start the JSON Server by running the following command:
+    <pre>
+    json-server db.json
+    </pre>
+    This will start the JSON Server on the default port 3000
 
-### `npm run build`
+### Setting up the React App
+1. Clone the [flatiron-market-place-react-app](https://github.com/nnpk1007/flatiron-market-place-react-app) repository to your local machine, and change directory into this folder
+2. Install the required dependencies by running the following command in the repository's root directory:
+    <pre>
+    npm install
+    </pre>
+3. Start the React development server by running the following command:
+    <pre>
+    npm start
+    </pre>
+    This will start the React app in development mode and open it in your default browser. Any changes you make to the code will trigger an automatic reload.
+4. You can access the Flatiron Market Place application by visiting [http://localhost:4000](http://localhost:4000) in your browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Production
+- The Flatiron Market Place app is already deployed and accessible using the following link: [https://flatiron-market-place.netlify.app/](https://flatiron-market-place.netlify.app/). You may wait a litte bit for the back-end server to be loaded on render.com.
+- The json database is already deployed and accessible using the following link: [https://flatiron-market-place-json-server.onrender.com](https://flatiron-market-place-json-server.onrender.com)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### To use the deployed version, simply visit the provided [link](https://flatiron-market-place.netlify.app/) in your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
+- View listing items.
+- Create your account.
+- Login to add items for sale.
+- Remove item button is only showed when you're logged in and that item is added by you.
+## Technologies Used
+- JSON Server: A simple JSON-based database to store listing items and users data.
+- React: A JavaScript library for building user interfaces.
+- React Router Ver 6 which is not cover in my curiculum. Learing source: [https://blog.logrocket.com/react-router-v6-guide/](https://blog.logrocket.com/react-router-v6-guide/)
+- Higher-order component to create an authenticate requirement. Learning source:[https://www.makeuseof.com/create-protected-route-in-react/](https://www.makeuseof.com/create-protected-route-in-react/#:~:text=To%20protect%20routes%2C%20the%20private,private%20component%20as%20a%20child.&text=The%20Protected%20component%20will%20check%20whether%20isLoggedIn%20is%20true%20or%20false.)
+- Render: A hosting platform for deploying database (back-end)
+- Netlify: A hosting platform for deploying React applications (front-end).
+- Bootstrap: A CSS framework for styling and layout.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Feel free to contribute to the project by submitting pull requests or opening issues in the respective repositories.
