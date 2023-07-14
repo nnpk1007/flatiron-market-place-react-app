@@ -54,13 +54,14 @@ To work on Flatiron Market Place app locally, follow the steps below:
 - Create your account.
 - Login to add items for sale.
 - Remove item button is only showed when you're logged in and that item is added by you.
-## Technologies Used
+## Technologies and Images Used
 - JSON Server: A simple JSON-based database to store listing items and users data.
 - React: A JavaScript library for building user interfaces.
 - React Router Ver 6 which is not cover in my curiculum. Learing source: [https://blog.logrocket.com/react-router-v6-guide/](https://blog.logrocket.com/react-router-v6-guide/)
 - Higher-order component to create an authenticate requirement. Learning source:[https://www.makeuseof.com/create-protected-route-in-react/](https://www.makeuseof.com/create-protected-route-in-react/#:~:text=To%20protect%20routes%2C%20the%20private,private%20component%20as%20a%20child.&text=The%20Protected%20component%20will%20check%20whether%20isLoggedIn%20is%20true%20or%20false.)
-- Render: A hosting platform for deploying database (back-end)
+- Render: A hosting platform for deploying database (back-end).
 - Netlify: A hosting platform for deploying React applications (front-end).
 - Bootstrap: A CSS framework for styling and layout.
+- Random images on the internet which are used for study purpose only.
 
 ### Feel free to contribute to the project by submitting pull requests or opening issues in the respective repositories.
