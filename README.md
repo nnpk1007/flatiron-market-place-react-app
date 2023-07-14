@@ -15,6 +15,10 @@ The React app uses custom environment variables to configure different settings 
 - env.development: Contains environment variables used for development.
 - env.production: Contains environment variables used for production.
 
+## Default users to test the app:
+- user name: user1
+- password: password1
+ 
 ## Development
 To work on Flatiron Market Place app locally, follow the steps below:
 
