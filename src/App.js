@@ -69,7 +69,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar loggedIn={loggedIn} handleLogout={handleLogout}/>
+      <Navbar loggedIn={loggedIn} handleLogout={handleLogout} />
 
       <div className="container mt-4">
         <Routes>
